@@ -1,0 +1,107 @@
+.containerBody {
+  font-family: 'Montserrat', sans-serif;
+  background-color: #f2f4f8;
+  margin: 0;
+  box-sizing: border-box;
+    width: 100vw;
+    height: 100vh;
+}
+
+.containerZoom {
+    display: grid;
+    cursor: pointer;
+    max-width: 120rem;
+    margin-right: auto;
+    margin-left: auto;
+    transition: all 2s;
+}
+
+.gridRowMap {
+    display: grid;
+    grid-template-columns: repeat(93, 5px);
+    column-gap: 5px;
+    row-gap: 4px;
+
+    /*  */
+    margin-top: 5rem;
+    margin-left: 2rem;
+}
+
+.circleFrame0,
+.circleFramePhoto,
+.circleFrameAdd { 
+    display: inline-block;
+    background-color: rgba(0, 72, 108, 0.489);
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;  
+    margin: 0;
+    padding: 0;
+
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    text-align: center;
+    transition: all 500ms;
+    
+}
+
+.circleFrame0:hover,
+.circleFramePhoto:hover,
+.circleFrameAdd:hover  {
+    transform: scale(12);
+}
+
+
+
+.circleFramePhoto {
+    transform: scale(1.8);
+}
+
+.circle-frame-add {
+    transition: background-color 100ms, transform 300ms; 
+}
+
+.circleFrameAdd:before {
+    position: absolute;
+    content: "";
+    background-image: url('../client/public/img/add-user.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;  
+
+    display: none;
+}
+
+.circleFrameAdd:hover:before {
+    display: inline-block;
+    transform: translate(-50%, -50%);  
+    /* -60% */
+
+    top: 50%;
+    left: 50%;
+    width: 2px;
+    height: 2px;
+}
+
+.circleFrameAdd:active,
+.circleFrameAdd:visited {
+    background-color: rgba(0, 108, 29, 0.643);
+    transform: scale(14);
+}
+
+
+
+
+.circleFrame0 { 
+    background-color: transparent;
+}
+  
+
+.card {
+
+    background-color: #1B5972;
+    width: 300px;
+    height: 600px;
+}
