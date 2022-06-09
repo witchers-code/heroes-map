@@ -1,0 +1,9 @@
+.feedContainer {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10rem;
+
+    max-width: 20rem;
+    height: 30rem;
+    overflow: scroll;
+}

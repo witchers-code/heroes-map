@@ -1,7 +1,11 @@
+/* eslint-disable prettier/prettier */
 import s from './Map.module.css';
 import { useState } from 'react';
+import { Feed, Card } from 'src/components';
+import Image from 'next/image'
 
 export default function Home() {
+
   let arr = Array.from(Array(60), () => new Array(93).fill(0));
 
   arr[0].fill(1, 53, 61);
@@ -115,65 +119,83 @@ export default function Home() {
   arr[58].fill(1, 59, 64);
   arr[59].fill(1, 59, 63);
 
-  const [person, setPerson] = useState({
-    id: 'andrij-040',
-    name: 'Andriy',
-    avatar: 'img/heroes/sol2.png',
-    position: [5, 30],
-  });
+  // const [person, setPerson] = useState({
+  //   id: 'andrij-040',
+  //   name: 'Andriy',
+  //   avatar: 'img/heroes/sol2.png',
+  //   description: "Історія",
+  //   position: [5, 30],
+  // });
 
-  const memories = [
+  const Heroes = [
     {
-      id: 'ivan-940',
+      id: '0',
       name: 'Ivan',
-      avatar: 'img/heroes/sol1.png',
+      avatar: '/sol1.png', 
+      description: "Історія",
       position: [2, 60],
     },
     {
-      id: 'roman-9430',
+      id: '1',
       name: 'Roman',
-      avatar: 'img/heroes/sol2.png',
+      avatar: '/sol2.png',
+      description: "Історія",
       position: [3, 12],
     },
     {
-      id: 'ivan-940',
-      name: 'Ivan',
-      avatar: 'img/heroes/sol1.png',
+      id: '2',
+      name: 'Валентин',
+      avatar: '/heroes/sol1.png',
+      description: "Історія",
       position: [10, 30],
     },
     {
-      id: 'ivan-940',
-      name: 'Ivan',
-      avatar: 'img/heroes/sol1.png',
+      id: '3',
+      name: 'Андрій',
+      avatar: '/heroes/sol1.png',
+      description: "Історія",
       position: [11, 30],
     },
     {
-      id: 'ivan-940',
-      name: 'Ivan',
-      avatar: 'img/heroes/sol1.png',
+      id: '4',
+      name: 'Максим',
+      avatar: '/heroes/sol1.png',
+      description: "Історія",
       position: [10, 31],
     },
     {
-      id: 'ivan-940',
-      name: 'Ivan',
-      avatar: 'img/heroes/sol1.png',
+      id: '5',
+      name: 'Володимир',
+      avatar: '/heroes/sol1.png',
+      description: "Історія",
       position: [40, 58],
     },
   ];
 
-  const clickPhoto = (e) => {
-    e.preventDefault();
-    const personclick = memories.filter((el) => el.id === e.target.id);
+  // const clickPhoto = (e) => {
+  //   e.preventDefault();
+  //   const personclick = memories.filter((el) => el.id === e.target.id);
 
-    setPerson(personclick[0]);
-  };
+  //   setPerson(personclick[0]);
+  // };
+
+  // const Avatar = (link) => {
+  //   return <Image src={link} alt="avatar" />
+  // }
+
+  // const zoomAvatar = (id) = {
+  //     document.getElementById(id).classList.add("mystyle"); 
+      
+  // }
+
 
   return (
     <div className={s.containerBody}>
       <div className={s.containerZoom}>
         <div className={s.gridRowMap}>
-          {arr.map((row, index1) => {
+          { arr.map((row, index1) => {
             return row.map((heroe, index2) => {
+
               if (heroe === 0) {
                 return (
                   <div
@@ -181,17 +203,42 @@ export default function Home() {
                     className={`s.circleFrame${heroe}`}
                   ></div>
                 );
+                
               } else {
-                return (
-                  <div
-                    key={`${index1} ${index2}`}
-                    className={s.circleFrameAdd}
-                  ></div>
-                );
-              }
-            });
-          })}
+                const res = Heroes.filter((avatar) => avatar.position[0] === index1 && avatar.position[1] === index2)
+                if (res[0]?.avatar) {
+                  return (
+                    <div key={`${index1} ${index2}`} className={s.circleFramePhoto}
+                    id={res[0].id}
+                    //   style={{ 
+                    //     backgroundImage: "url(" + `${require('/heroes/sol2.png')}` + ")",
+                    //   }}
+                    //   id={res[0].id}
+                    >
+                      {/* <Image src={`/img/add-user.svg`} alt="avatar" width={5} height={5}/> */}
+                    </div>
+                    )
+                  } else {
+                      return (
+                        <div
+                          key={`${index1} ${index2}`}
+                          className={s.circleFrameAdd}
+                        ></div>
+                      );
+                  }
+                } //first else
+              });
+            })
+          }
         </div>
+
+        <Feed>
+          { Heroes.slice(0,5).map(heroe => <Card {...heroe}  key={`${heroe.id}-card`}    
+            onMouseEnter={() => {document.getElementById(heroe.id).classList.add(`${s.zoomAvatar}`)} }
+            onMouseLeave={() => {document.getElementById(heroe.id).classList.remove(`${s.zoomAvatar}`)} }
+         />)
+         }
+        </Feed>
       </div>
     </div>
   );

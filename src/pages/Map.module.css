@@ -3,14 +3,17 @@
   background-color: #f2f4f8;
   margin: 0;
   box-sizing: border-box;
-    width: 100vw;
-    height: 100vh;
+  width: 100vw;
+  height: 120vh;
 }
 
 .containerZoom {
     display: grid;
+    justify-content: start;
+    align-items: start;
+    grid-template-columns: 2.5fr 1fr;
     cursor: pointer;
-    max-width: 120rem;
+    max-width: 100rem;
     margin-right: auto;
     margin-left: auto;
     transition: all 2s;
@@ -19,12 +22,13 @@
 .gridRowMap {
     display: grid;
     grid-template-columns: repeat(93, 5px);
-    column-gap: 5px;
+    align-content: center;
+    column-gap: 4px;
     row-gap: 4px;
 
     /*  */
     margin-top: 5rem;
-    margin-left: 2rem;
+    margin-left: 5rem;
 }
 
 .circleFrame0,
@@ -47,19 +51,22 @@
     
 }
 
+.circleFrame0 { 
+    background-color: transparent;
+}
+
 .circleFrame0:hover,
 .circleFramePhoto:hover,
 .circleFrameAdd:hover  {
     transform: scale(12);
 }
 
-
-
 .circleFramePhoto {
+    /* background-image: url('../public/heroes/sol1.png'); */
     transform: scale(1.8);
 }
 
-.circle-frame-add {
+.circleFrameAdd {
     transition: background-color 100ms, transform 300ms; 
 }
 
@@ -92,11 +99,6 @@
 }
 
 
-
-
-.circleFrame0 { 
-    background-color: transparent;
-}
   
 
 .card {
@@ -104,4 +106,8 @@
     background-color: #1B5972;
     width: 300px;
     height: 600px;
+}
+
+.zoomAvatar {
+    transform: scale(12);
 }
