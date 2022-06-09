@@ -5,6 +5,8 @@ interface HeroeProps {
   name: string;
   avatar: string;
   description: string;
+  onMouseEnter: () => void;
+  onMouseLeave: () => void;
 }
 
 const Card: FC<HeroeProps> = ({
@@ -12,7 +14,7 @@ const Card: FC<HeroeProps> = ({
   avatar = '/link-to-photo',
   description = 'Опис...',
   onMouseEnter,
-  onMouseLeave
+  onMouseLeave,
 }) => {
   return (
     <>

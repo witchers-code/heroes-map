@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import s from './Feed.module.css';
 
-const Card: FC = ({ children }) => {
+const Feed: FC = ({ children }) => {
   return <div className={s.feedContainer}>{children}</div>;
 };
 
-export default Card;
+export default Feed;
